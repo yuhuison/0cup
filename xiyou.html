@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>重走西游</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<script src="pixi.js"></script>
+	<script src="pixi-filters.js"></script>
+
+	<style>
+		html {
+			overflow: hidden;
+			margin: 0;
+		}
+
+		body {
+			margin: 0;
+			background: url("image/bg2.png") no-repeat fixed center;
+			background-size: 100%;
+		}
+
+		@font-face {
+			font-family: "s";
+			src: url("assets/f.ttf");
+		}
+
+		@font-face {
+			font-family: "b";
+			src: url("assets/b.ttf");
+		}
+
+		#headline_a {
+			color: rgb(255, 255, 255);
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#hla {
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#bgimg {
+			width: 100%;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+
+		}
+
+		canvas {
+			z-index: -1;
+			display: block;
+			padding: 0;
+			margin: 0;
+		}
+
+		.hl_b {
+			color: rgb(255, 255, 255);
+			width: 200px;
+			font-family: "s";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2 {
+			color: rgb(255, 250, 250);
+			width: 200px;
+			font-family: "b";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2c {
+			background: url("image/juan2.png") no-repeat center;
+			background-size: auto 100%;
+			color: rgb(0, 0, 0);
+			width: 200px;
+			font-family: "b";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+
+		#headline_a:hover {
+			animation: shan 2s;
+			cursor: pointer;
+		}
+
+
+		.fm {
+			position: relative;
+		}
+
+		@keyframes shan {
+			0% {
+				color: #000;
+			}
+
+			50% {
+				color: #755555;
+			}
+
+			100% {
+				color: #000;
+			}
+		}
+
+		@keyframes shan2 {
+			0% {
+				color: goldenrod;
+			}
+
+			50% {
+				color: #755555;
+			}
+
+			100% {
+				color: goldenrod;
+			}
+		}
+
+		.showview {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+		}
+
+		.showview:hover {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+			cursor: pointer;
+			animation: shan2 2s;
+		}
+
+		.detail {
+			font-size: 28px;
+			padding: 20px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.fmimg {
+			border-radius: 5px;
+			transition: opacity 1s;
+		}
+
+		.view {
+			transition: opacity 1s;
+			;
+		}
+	</style>
+	<div id="hls" style="width: 100%;left: 0%;top: 0%;z-index: 2;">
+		<div style="height:50px;width: 100%">
+			<div style="background: rgb(0, 0, 0);width: 100%;height: 50px;">
+				<div style="height: 100%;margin:0 auto;width: 900px;">
+					<div class="hl_b" style="width: 400px;"><a id="headline_a" style="color: #7e1d1d;" href="">探索
+							:西游世界</a></div>
+					<div class="hl_b"><a id="headline_a" href="index.html">回到首页</a> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</head>
+
+<body style="color: white;">
+	<div id="hls" style="width: 100%;left: 0%;top: 0%;z-index: 2;">
+		<div style="height:50px;width: 100%">
+			<div style="background: rgb(0, 0, 0);width: 100%;height: 50px;text-align: center;">
+				<div style="height: 100%;margin:0 auto;width: 90%;text-align: center;color: white;">
+					<div class="hl_b2c" id="hl1"><span id="hla" >路在何方</span> </div>
+					<div class="hl_b2" id="hl2"><span id="hla" >大圣归来</span> </div>
+					<div class="hl_b2" id="hl3"><span id="hla" >路在脚下</span> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="position: relative;">
+		<div  id="view1" style="font-family: 'b';opacity: 1;position: absolute;font-size: 70px;">
+			<div id="c" style="opacity: 0;">
+				<div style="padding: 40px;width: 90%;font-size: 40px;">
+					&nbsp;&nbsp;不知道多少人曾经有过一个大圣梦，
+					至少笔者有过这样的一个梦，梦想能变成孙悟空，驾驭<span style="color: goldenrod;">筋斗云，</span>
+					翱翔于万里之间，<span style="color: indianred;">斩妖，除暴，安良</span>。
+					<div id="fmz" style="opacity: 0;"><br/><img class="fmimg" style="width: 20%;" src="image/zmxy.png" />
+						<br/>笔者曾经特别喜欢玩的一个游戏，它真的创造了一个<span style="color: gold;">梦</span>。
+					</div>
+					<div id="fmz2" style="opacity: 0;">
+						<br/>但是，这个梦一直被埋在心底，直到 <a onclick="goto2()" style="color: indianred;cursor: pointer;text-decoration:underline;">大圣归来</a></span>。
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="view2" style="font-family: 'b';opacity: 0;position: absolute;display: none;font-size: 70px;">
+			<div id="view2c" style="opacity: 0;">
+				<div style="padding: 40px;width: 90%;font-size: 40px;">
+					&nbsp;&nbsp;2020年8月20日，<span style="color: brown;">游戏科学</span>官方发布了新作《<span style="font-family: 's';">黑神话：悟空</span>》的首支实机演示视频，视频长达 13 分钟，从演示视频来看效果确实颇为震撼
+					<div id="view2f1" style="opacity: 0;">
+						<br/>
+						虽然游戏是以悟空为主，但该团队似乎打造的是一个全新的东方魔幻世界，完全
+						按照原著描述设计的怪物，各种法宝，传统奇闻异志的宏伟想象，无处不在的<span style="color: coral;">中华文化</span>贯穿游戏始终。
+					</div>
+					<div id="view2f2" style="opacity: 0;">
+						<br/>有位用户评论：<span style="color: chocolate;">“我悟了，原来我还是像小时候一样想当齐天大圣”</span>。
+					</div>
+					<div id="view2f3" style="opacity: 0;">
+						<br/>所以，路在何方？<a onclick="goto3()" style="color: indianred;cursor: pointer;text-decoration:underline;">路在脚下</a></span>。
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="view3" style="font-family: 'b';opacity: 0;position: absolute;display: none;font-size: 70px;">
+			
+			<div id="view3c" style="opacity: 0;">
+				<video id="vbs2" loop="true" style="padding: 10px;width: 98%;" autoplay="true" src="assets/swk.mp4"></video>
+				<p id="view3c" style="position: absolute;padding: 80px;color:white;font-size: 40px;top:0px">
+					我们需要悟空，悟空更需要我们。我们已经在取经路上走了太久<br/>
+					希望终有一天，这只悟空会睁开他的双眼<br/>
+					<a style="color: gold;" href="http://www.gamesci.com.cn/">访问游戏科学</a><br/>
+					<a style="color: gold;" href="hualang.html">查看画廊：重走西游</a><br/>
+					<a style="color: gold;" href="index.html">回到首页</a><br/>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	console.log(document.body.style);
+	window.views = new Array();
+	window.hls=new Array();
+	window.isLoadView=false;
+	requestAnimationFrame(frameLoop1);
+	window.level=0;
+	window.frame=0;
+	window.es=new Object();
+	var t1;
+	function goto2(){
+		window.frame=0;
+		document.getElementById("view1").style.display="none";
+		document.getElementById("view2").style.display="block";
+		document.getElementById("view2").style.opacity="1";
+		document.getElementById("hl2").className="hl_b2c";
+		document.getElementById("hl1").className="hl_b2";
+		window.level=1;
+		requestAnimationFrame(frameLoop2);
+	}
+	function goto3(){
+		window.frame=0;
+		document.getElementById("view2").style.display="none";
+		document.getElementById("view3").style.display="block";
+		document.getElementById("view3").style.opacity="1";
+		document.getElementById("hl3").className="hl_b2c";
+		document.getElementById("hl2").className="hl_b2";
+		window.level=2;
+		requestAnimationFrame(frameLoop3);
+	}
+	function frameLoop3(){
+		if(window.level==2){
+			requestAnimationFrame(frameLoop3);
+		}
+		
+		window.frame+=1;
+		if(window.frame==20){
+			t1=document.createElement("span");
+			t1.style.position="absolute";
+			t1.style.width="800px";
+			t1.style.left=document.body.clientWidth/2.5+"px";
+			t1.style.top=window.innerHeight/3.5+"px";
+			t1.innerHTML="路漫漫长修远兮";
+			t1.style.opacity="0";
+			document.getElementById("view3").append(t1);
+		}else if(window.frame>=20&&window.frame<120){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.01).toString();
+		}else if(window.frame==120){
+			t1.innerHTML='吾将上下而求索';
+			t1.style.opacity="0";
+			t1.style.left=document.body.clientWidth/3+"px";
+			t1.style.top=window.innerHeight/4.0+"px";
+		}else if(window.frame>120&&window.frame<320){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.005).toString();
+		}else if(window.frame>320&&window.frame<520){
+			t1.style.opacity=(parseFloat(t1.style.opacity)-0.005).toString();
+		}else if(window.frame>520&&window.frame<720){
+			var con=  document.getElementById("view3c");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}
+	}
+
+	function frameLoop2(){
+		if(window.level==1){
+			requestAnimationFrame(frameLoop2);
+		}
+		
+		window.frame+=1;
+		if(window.frame==20){
+			t1=document.createElement("span");
+			t1.style.position="absolute";
+			t1.style.width="800px";
+			t1.style.left=document.body.clientWidth/2.5+"px";
+			t1.style.top=window.innerHeight/3.5+"px";
+			t1.innerHTML="所以，他现在回来了吗";
+			t1.style.opacity="0";
+			document.getElementById("view2").append(t1);
+		}else if(window.frame>=20&&window.frame<120){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.01).toString();
+		}else if(window.frame==120){
+			t1.innerHTML='<span style="color:gold">他回来了!</span>';
+			t1.style.opacity="0";
+			t1.style.left=document.body.clientWidth/3+"px";
+			t1.style.top=window.innerHeight/4.0+"px";
+		}else if(window.frame>120&&window.frame<320){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.005).toString();
+		}else if(window.frame>320&&window.frame<520){
+			t1.style.opacity=(parseFloat(t1.style.opacity)-0.005).toString();
+		}else if(window.frame>520&&window.frame<720){
+			var con=  document.getElementById("view2c");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}else if(window.frame>720&&window.frame<920){
+			var con=  document.getElementById("view2f1");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}
+		else if(window.frame>920&&window.frame<1120){
+			var con=  document.getElementById("view2f2");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}else if(window.frame>920&&window.frame<1320){
+			var con=  document.getElementById("view2f3");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}
+	}
+
+
+
+
+	function frameLoop1(){
+		if(window.level==0){
+			requestAnimationFrame(frameLoop1);
+		}
+		
+		window.frame+=1;
+		if(window.frame==20){
+			t1=document.createElement("span");
+			t1.style.position="absolute";
+			t1.style.width="800px";
+			t1.style.left=document.body.clientWidth/2.5+"px";
+			t1.style.top=window.innerHeight/3.5+"px";
+			t1.innerHTML="小时候";
+			t1.style.opacity="0";
+			document.getElementById("view1").append(t1);
+		}else if(window.frame>=20&&window.frame<120){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.01).toString();
+		}else if(window.frame==120){
+			t1.innerHTML="你最喜欢的人物是什么？";
+			t1.style.opacity="0";
+			t1.style.left=document.body.clientWidth/3+"px";
+			t1.style.top=window.innerHeight/4.0+"px";
+		}else if(window.frame>120&&window.frame<320){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.005).toString();
+		}else if(window.frame==320){
+			t1.innerHTML='“<span style="color:red">孙悟空</span>啊”~';
+			t1.style.opacity="0";
+			t1.style.left=document.body.clientWidth/4+"px";
+			t1.style.top=window.innerHeight/4.0+"px";
+		}else if(window.frame>320&&window.frame<520){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.005).toString();
+		}else if(window.frame==520){
+			t1.innerHTML='“为什么你想当孙悟空呀?”~';
+			t1.style.opacity="0";
+			t1.style.left=document.body.clientWidth/5+"px";
+			t1.style.top=window.innerHeight/3.0+"px";
+		}else if(window.frame>520&&window.frame<720){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.005).toString();
+		}else if(window.frame==720){
+			t1.innerHTML='因为孙悟空厉害，他会<span style="color:gold">筋斗云！</span>';
+			t1.style.opacity="0";
+			t1.style.left=document.body.clientWidth/5+"px";
+			t1.style.top=window.innerHeight/4.0+"px";
+		}else if(window.frame>720&&window.frame<920){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.005).toString();
+		}else if(window.frame==920){
+			t1.innerHTML='更重要的是，他还是一个<span style="color:goldenrod">英雄</span>！';
+			t1.style.opacity="0";
+			t1.style.left=document.body.clientWidth/5+"px";
+			t1.style.top=window.innerHeight/4.0+"px";
+		}else if(window.frame>920&&window.frame<1120){
+			t1.style.opacity=(parseFloat(t1.style.opacity)+0.005).toString();
+		}
+		else if(window.frame>1120&&window.frame<1320){
+			t1.style.opacity=(parseFloat(t1.style.opacity)-0.005).toString();
+		}else if(window.frame==1320){
+			t1.style.display="none";
+		}
+		else if(window.frame>1320&&window.frame<1520){
+			var con=  document.getElementById("c");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}else if(window.frame>1520&&window.frame<1720){
+			var con=  document.getElementById("fmz");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}
+		else if(window.frame>1720&&window.frame<1920){
+			var con=  document.getElementById("fmz2");
+			con.style.opacity=(parseFloat(con.style.opacity)+0.005).toString();
+		}
+	}
+</script>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+{
+    "imglist":[
+        {
+            "title":"国风武侠",
+            "imgs":[
+                {
+                    "url":"https://www.mop.com/shouyou/imgfile/202002/26/1582706653_9.jpg",
+                    "text":"这是《仙剑奇侠传》移动版<br/>(手游)"
+                },
+                {
+                    "url":"http://image20.it168.com/201107_500x375/691/40b0bd4943f96885.jpg",
+                    "text":"仙剑奇侠传5 封面。<br/>yyds"
+                },
+                {
+                    "url":"https://img.3dmgame.com/uploads/allimg/180622/399_180622103739_1_lit.jpg",
+                    "text":"逆水寒，会呼吸的江湖。<br/>......貌似槽点有点多"
+                },{
+                    "url":"https://image.tvsou.com/bgame/202005/29113117tzvj.jpg",
+                    "text":"一梦江湖。<br/>爷（曾经）最爱玩的手游"
+                }
+            ]
+        },        {
+            "title":"重走西游",
+            "imgs":[
+                {
+                    "url":"http://www.gamesci.com.cn/assets/img/bg/img_title_b1.jpg",
+                    "text":"游戏科学官网封面。<br/>本大人啥时候能做出那样的网站啊"
+                },
+                {
+                    "url":"https://up.enterdesk.com/edpic/ef/0e/6b/ef0e6be226bed31f7114e22e2ca849b8.jpg",
+                    "text":"《悟空》实机演示中的四大天王。<br/>好有压迫感"
+                },
+                {
+                    "url":"https://up.enterdesk.com/edpic_source/98/36/6e/98366ed5b300911d77bdb0a5329e945e.jpg",
+                    "text":"《悟空》实机演示中的画面。<br/>不知道这个游戏和2077谁先出"
+                }
+            ]
+        },      {
+            "title":"醉意江南",
+            "imgs":[
+                {
+                    "url":"image/g1.jpg",
+                    "text":"微博网友创作的沙雕同人图（话说这不是我吗）"
+                },
+                {
+                    "url":"image/g2.jpg",
+                    "text":"貌似是新上架的建筑（本大人买不起呜呜<br/>┭┮﹏┭┮）"
+                },
+                {
+                    "url":"image/g3.jpg",
+                    "text":"人家的布局"
+                }
+            ]
+        }
+    ]
+}

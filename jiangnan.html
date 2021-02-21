@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>醉意江南</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<script src="pixi.js"></script>
+	<script src="pixi-filters.js"></script>
+
+	<style>
+		html {
+			overflow: hidden;
+			margin: 0;
+		}
+
+		body {
+			margin: 0;
+			background: url("image/bg3b.jpg") no-repeat fixed center;
+			background-size: 100%;
+		}
+
+		@font-face {
+			font-family: "s";
+			src: url("assets/f.ttf");
+		}
+
+		@font-face {
+			font-family: "b";
+			src: url("assets/b.ttf");
+		}
+
+		#headline_a {
+			color: rgb(3, 3, 3);
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#hla {
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#bgimg {
+			width: 100%;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+
+		}
+
+		canvas {
+			z-index: -1;
+			display: block;
+			padding: 0;
+			margin: 0;
+		}
+
+		.hl_b {
+            
+			color: rgb(0, 0, 0);
+			width: 200px;
+			font-family: "s";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2 {
+			color: rgb(255, 250, 250);
+			width: 200px;
+			font-family: "b";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2c {
+			background: url("image/juan.png") no-repeat center;
+			background-size: auto 100%;
+			color: rgb(255, 250, 250);
+			width: 200px;
+			font-family: "b";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+
+		#headline_a:hover {
+			animation: shan 2s;
+			cursor: pointer;
+		}
+
+
+		.fm {
+            position: relative;
+            top: 0px;
+			cursor: pointer;
+            transition: top 1s;
+		}
+        .fm:hover{
+            position: relative;
+            top: 10px;
+        }
+		
+
+		@keyframes shan {
+			0% {
+				color: #000;
+			}
+
+			50% {
+				color: #755555;
+			}
+
+			100% {
+				color: #000;
+			}
+		}
+
+		@keyframes shan2 {
+			0% {
+				color: goldenrod;
+			}
+
+			50% {
+				color: #755555;
+			}
+
+			100% {
+				color: goldenrod;
+			}
+		}
+
+		.showview {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+		}
+
+		.showview:hover {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+			cursor: pointer;
+			animation: shan2 2s;
+		}
+
+		.detail {
+			font-size: 28px;
+			padding: 20px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.fmimg {
+			border-radius: 5px;
+			transition: opacity 1s;
+		}
+
+		.view {
+			transition: opacity 1s;
+			;
+		}
+	</style>
+	<div id="hls" style="width: 100%;left: 0%;top: 0%;z-index: 2;">
+		<div style="height:50px;width: 100%">
+			<div style="background: #E0E3D0;width: 100%;height: 50px;">
+				<div style="height: 100%;margin:0 auto;width: 900px;">
+					<div class="hl_b" style="width: 400px;"><a id="headline_a" style="color: #7e1d1d;" href="">探索
+							:绘卷世界</a></div>
+					<div class="hl_b"><a id="headline_a" href="index.html">回到首页</a> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</head>
+
+<body style="color: white;" onclick="playBGM()">
+    <div style="position: absolute;bottom: 0px;width: 20%;font-size: 30px;color: black;font-family: 'b';">
+        <div style="background: #E0E3D0;width: 70%;height: 300px;border-radius: 20px;margin: 20px;text-align: center;">
+            <p id="dialog" style="padding: 5px;">这位大人您想看点啥？</p>
+        </div>
+    <img style="width: 60%;" src="image/yan.png"/>
+</div>
+        <div id="viewXX">
+        <div style="position: absolute;left: 20%;width: 17%;top:100px"><img onclick="showDetail(1)" onmousemove="onhover(1)" class="fm" style="width: 76%;" src="image/tit1.png"></div>
+        <div style="position: absolute;left: 40%;width: 17%;top:100px"><img  onclick="showDetail(2)" onmousemove="onhover(2)" class="fm" style="width: 76%;" src="image/tit2.png"></div>
+        <div style="position: absolute;left: 60%;width: 17%;top:100px"><img  onclick="showDetail(3)" onmousemove="onhover(3)" class="fm" style="width: 76%;" src="image/tit3.png"></div>
+		<div style="position: absolute;left: 80%;width: 17%;top:100px"><img onclick="showDetail(4)" onmousemove="onhover(4)" class="fm" style="width: 76%;" src="image/tit4.png"></div>
+	    </div>
+		<div id="viewc" style="display: none;position: absolute;left: 20%;top:13%;height: 80%;width: 80%; opacity: 0;">
+			<img src="image/winbg.png" style="position: absolute;width: 100%;z-index: -1;">
+			<div id="viewex" style="font-size: 35px;font-family: 'b';padding: 50px;color: black;">
+			<div id="viewexc" style="display: flex;">
+				</div>
+				<div onclick="hiddenDetatil()" style="bottom: 0px;height: 46px;width: 200px;background: url('image/knowit.png') no-repeat 100%;position: absolute;right: 60px;color: white;cursor: pointer;">
+				&nbsp;知道了
+				</div>
+			</div>
+			<div id="view1" style="display: none;">
+				<div>
+					<img style="height: 100%;border-radius: 5px;" src="image/jngf.png"/>
+				</div>
+				<div style="padding: 20px;">
+				《江南百景图》的“出圈”很大程度上依赖于独特的美术风格。一开始，美术团队尝试了很多风格：民俗画、剪纸风，
+				或者是吴冠中式的水墨风，甚至策划还画了一幅心目中的小镇图。
+				后来，主美千九花了半个小时画了幅“小鸡啄米图”，让大家眼前一亮——农家小院画风朴拙，却带着几分烟火气。
+				</div>
+			</div>
+			<div id="view2" style="display: none;">
+				<div style="width: 30%;">
+					<img style="height: 50%;border-radius: 5px;" src="image/dalishi.gif"/>
+				</div>
+				<div style="padding: 20px;">
+					在三次元，今夏《江南百景图》“出圈”也引起了当地旅游部门的重视。游戏中，最早的奇观是大报恩寺的琉璃塔，大报恩寺琉璃塔侧立于应天府西北隅，涌地擎天，是应天府地图中最高的建筑。在游戏中，随着等级的逐步提升，琉璃宝塔的外观也一步步从地基转变为繁华。借着游戏的大热，江苏的政务号还借此推送过一条《600年前的琉璃塔长啥样？玩个游戏就知道！》，打通了二次元和三次元的壁垒。
+				</div>
+			</div>
+			<div id="view3" style="display: none;">
+				<div >
+					<img style="width: 90%;" src="image/whm.png"/>
+				</div>
+				<div style="padding: 20px;">
+					《江南百景图》里还有许多有趣的历史人物，从大国皇帝朱元璋，到市井百姓，都可以收入玩家的麾下，成为居民中的一员，皇帝都给你打工，这好吗？这很好。
+					<br/>
+					《江南百景图》里面的人物还会发生各种有趣的互动和故事。
+				</div>
+			</div>
+			<div id="view4" style="display: none;">
+					<img style="width: 30%;border-radius: 5px;" src="image/dg.png"/>
+				<div style="padding: 20px;">
+					《江南百景图》世界中发生的许多奇闻异事，在历史上均有典故，玩家可以从这些典故中体会大明风光，江南盛世，更具有历史情怀。<br/>
+					<a style="color: gold;" href="https://www.taptap.com/app/179371">访问江南百景图</a><br/>
+					<a style="color: gold;" href="hualang.html">查看画廊：醉意江南</a><br/>
+					<a style="color: gold;" href="index.html">回到首页</a><br/>
+				</div>
+
+			</div>
+		</div>
+
+
+</body>
+<script>
+		var isPlayBGM=false;
+	function playBGM(){
+		if(isPlayBGM==false){
+			var audio = new Audio("assets/jnbjt.mp3");
+	audio.play();//
+	isPlayBGM=true;
+		}
+	}
+    function onhover(i){
+        if(i==1){
+            document.getElementById("dialog").innerHTML="《江南百景图》采用水墨手绘风格，看起来别有一番风味~";
+        }else if(i==2){
+            document.getElementById("dialog").innerHTML="作为一款建设经营的游戏,各种奇奇怪怪的建筑必不可少";
+        }else if(i==3){
+            document.getElementById("dialog").innerHTML="像我这样有趣的灵魂在三次元里有吗?";
+        }else if(i==4){
+            document.getElementById("dialog").innerHTML="百姓无不怀念我大明~";
+        }
+    }
+	function showDetail(i){
+		document.getElementById("viewXX").style.opacity="0";
+		document.getElementById("viewXX").style.display="none";
+		document.getElementById("viewc").style.display="block";
+		document.getElementById("viewexc").innerHTML=document.getElementById("view"+i.toString()).innerHTML;
+		requestAnimationFrame(frameLoopIn);
+	}
+	function hiddenDetatil(){
+		document.getElementById("viewXX").style.display="block";
+		frameLoopOut();
+	}
+    function frameLoopIn(){
+
+		var popacity=document.getElementById("viewc").style.opacity;
+		popacity=parseFloat(popacity)+0.03;
+		document.getElementById("viewc").style.opacity=popacity.toString();
+		if(popacity<=1){
+			requestAnimationFrame(frameLoopIn);
+		}
+	}
+	function frameLoopOut(){
+		var popacity=document.getElementById("viewc").style.opacity;
+		popacity=parseFloat(popacity)-0.03;
+		document.getElementById("viewc").style.opacity=popacity.toString();
+		var popacity=document.getElementById("viewXX").style.opacity;
+		popacity=parseFloat(popacity)+0.03;
+		console.log(popacity);
+		document.getElementById("viewXX").style.opacity=popacity.toString();
+		if(popacity<=0.9){
+			requestAnimationFrame(frameLoopOut);
+		}else{		
+		document.getElementById("viewc").style.display="none";
+		}
+	}
+</script>
+<script>
+
+</script>
+
+</html>

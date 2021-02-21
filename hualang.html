@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>游戏与传统文化</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<script src="pixi.js"></script>
+	<script src="pixi-filters.js"></script>
+
+	<style>
+		html {
+			overflow: hidden;
+			margin: 0;
+		}
+
+		body {
+			margin: 0;
+			background: url("image/bg.png") no-repeat fixed center;
+			background-size: 100%;
+		}
+
+		@font-face {
+			font-family: "s";
+			src: url("assets/f.ttf");
+		}
+
+		#headline_a {
+			color: #000;
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#hla {
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#bgimg {
+			width: 100%;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+
+		}
+
+		canvas {
+			z-index: -1;
+			display: block;
+			padding: 0;
+			margin: 0;
+		}
+
+		.hl_b {
+			color: black;
+			width: 200px;
+			font-family: "s";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2 {
+			color: black;
+			width: 200px;
+			font-family: "s";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2:hover {
+			cursor: pointer;
+			background: url("image/juan.png") no-repeat center;
+			background-size: auto 100%;
+			color: #fff;
+		}
+
+		#headline_a:hover {
+			animation: shan 2s;
+			cursor: pointer;
+		}
+
+		#view2 {
+			text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+		}
+
+		@keyframes shan {
+			0% {
+				color: #000;
+				background: 0;
+			}
+
+			50% {
+				color: #755555;
+				background: #FFFFFF;
+			}
+
+			100% {
+				color: #000;
+				background: 0;
+			}
+		}
+		@font-face {
+			font-family: "b";
+			src: url("assets/b.ttf");
+		}
+		@keyframes shan2 {
+			0% {
+				color: goldenrod;
+			}
+
+			50% {
+				color: #755555;
+			}
+
+			100% {
+				color: goldenrod;
+			}
+		}
+        .gtitle{
+            font-size: 45px;
+            font-family: 's';
+            color: black;
+            width: 100%;
+            
+        }
+        .gview{
+            display: flex;
+        }
+        .fm{
+            padding: 10px;
+        }
+
+        .fmimg{
+            width: 200px;
+
+            transition: width 4s;
+            transition: height 4s;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: width 2s;
+        }
+        .fmimg:hover{
+            width: 250px;
+        }
+		.showview {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+		}
+
+		.showview:hover {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+			cursor: pointer;
+			animation: shan2 2s;
+		}
+	</style>
+	<div id="hls" style="width: 100%;left: 0%;top: 0%;z-index: 2;">
+		<div style="height:50px;width: 100%">
+			<div style="background: rgba(255,255,255,.4);width: 100%;height: 50px;">
+				<div style="height: 100%;margin:0 auto;width: 900px;">
+					<div class="hl_b" style="width: 200px;"><a id="headline_a" 
+							href="index.html">探索</a></div>
+					<div class="hl_b"><a id="headline_a" style="color: #ff1010;" href="hualang.html">画廊</a> </div>
+					<div class="hl_b"><a id="headline_a" href="pro.html">心语</a> </div>
+					<div class="hl_b"><a id="headline_a" href="lunjian.html">论剑</a> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</head>
+
+<body>
+    <div style="position: absolute;bottom: 0px;width: 20%;font-size: 30px;color: black;font-family: 'b';">
+        <div style="background: #E0E3D0;width: 70%;height: 300px;border-radius: 20px;margin: 20px;text-align: center;">
+            <p id="dialog" style="padding: 5px;">这位大人您想看点啥？</p>
+        </div>
+    <img style="width: 60%;" src="image/yan.png"/>
+    </div>
+	<div id="view" style="position: absolute;left: 20%;padding: 20px;">
+		
+    </div>
+</body>
+
+<script>
+    var gdata;
+    var gid=0;
+    var gdatap=new Object();
+var xhr = new XMLHttpRequest();            
+    xhr.open('GET', "gallery.json", true);
+    xhr.onreadystatechange = function() {
+      // readyState == 4说明请求已完成
+      if (xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304) { 
+        // 从服务器获得数据 
+        gdata=JSON.parse(xhr.responseText);
+        for( i of gdata['imglist']){
+            var l = document.createElement("div");
+                l.innerHTML='<span class="gtitle">'+i.title+"</span>";
+                l.className="gview";
+                document.getElementById("view").appendChild(l);
+                var l = document.createElement("div");
+                l.className="gview";
+            for(j of i["imgs"]){
+                gdatap["id"+gid.toString()]=j;
+                var l1=document.createElement("div");
+                l1.className="fm";
+                var l2=document.createElement("img");
+                l2.src=j.url;
+                l2.className="fmimg";
+                l2.id="id"+gid.toString();
+                gid+=1;
+                l2.onmousemove=onhover;
+                l2.onmouseout=onout;
+                l2.onclick=clickon;
+                l1.appendChild(l2);
+                l.appendChild(l1);
+            }
+            document.getElementById("view").appendChild(l);
+        }
+      }
+    };
+    xhr.send();
+  function onhover(){
+    document.getElementById("dialog").innerHTML=gdatap[this.id].text;
+  }
+  function onout(){
+    document.getElementById("dialog").innerHTML="大人你还想看点啥？";
+  }
+  function clickon(){
+    window.open(gdatap[this.id].url);
+  }
+</script>
+
+</html>

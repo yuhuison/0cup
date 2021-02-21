@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>论剑</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<script src="pixi.js"></script>
+	<script src="pixi-filters.js"></script>
+
+	<style>
+		html {
+			overflow: hidden;
+			margin: 0;
+		}
+
+		body {
+			margin: 0;
+			background: url("image/bg.png") no-repeat fixed center;
+			background-size: 100%;
+		}
+
+		@font-face {
+			font-family: "s";
+			src: url("assets/f.ttf");
+		}
+
+		#headline_a {
+			color: #000;
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#hla {
+			font-size: 90%;
+			text-decoration: none;
+		}
+
+		#bgimg {
+			width: 100%;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+
+		}
+
+		canvas {
+			z-index: -1;
+			display: block;
+			padding: 0;
+			margin: 0;
+		}
+
+		.hl_b {
+			color: black;
+			width: 200px;
+			font-family: "s";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2 {
+			color: black;
+			width: 200px;
+			font-family: "s";
+			height: 100%;
+			font-size: 40px;
+			text-align: center;
+			float: left;
+		}
+
+		.hl_b2:hover {
+			cursor: pointer;
+			background: url("image/juan.png") no-repeat center;
+			background-size: auto 100%;
+			color: #fff;
+		}
+
+		#headline_a:hover {
+			animation: shan 2s;
+			cursor: pointer;
+		}
+
+		#view2 {
+			text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+		}
+
+		@keyframes shan {
+			0% {
+				color: #000;
+				background: 0;
+			}
+
+			50% {
+				color: #755555;
+				background: #FFFFFF;
+			}
+
+			100% {
+				color: #000;
+				background: 0;
+			}
+		}
+		@font-face {
+			font-family: "b";
+			src: url("assets/b.ttf");
+		}
+		@keyframes shan2 {
+			0% {
+				color: goldenrod;
+			}
+
+			50% {
+				color: #755555;
+			}
+
+			100% {
+				color: goldenrod;
+			}
+		}
+		.view{
+			transition: opacity 1s;
+		}
+		.showview {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+		}
+
+		.showview:hover {
+			z-index: 1;
+			position: absolute;
+			display: none;
+			font-family: 's';
+			font-size: 65px;
+			color: goldenrod;
+			cursor: pointer;
+			animation: shan2 2s;
+		}
+	</style>
+	<div id="hls" style="width: 100%;left: 0%;top: 0%;z-index: 2;">
+		<div style="height:50px;width: 100%">
+			<div style="background: rgba(255,255,255,.4);width: 100%;height: 50px;">
+				<div style="height: 100%;margin:0 auto;width: 900px;">
+					<div class="hl_b" style="width: 200px;"><a id="headline_a" 
+							href="index.html">探索</a></div>
+					<div class="hl_b"><a id="headline_a" href="hualang.html">画廊</a> </div>
+					<div class="hl_b"><a id="headline_a" href="pro.html">心语</a> </div>
+					<div class="hl_b"><a id="headline_a" style="color: #ff1010;" href="index.html">论剑</a> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</head>
+
+<body>
+	<div id="view" style="z-index: 1;position: absolute;width: 800px;font-family: 's';" class="view">
+		<br />
+		<span style="font-size: 75px;color: #851d1d;">宝剑锋从磨砺出</span>
+		<p style="font-size: 35px;font-family: 'b';">尝试扮演一名武侠，在适当的时机攻击或格挡。</p>
+		<p style="font-size: 40px;color: #851d1d;font-family: 'b';">领略游戏中激荡的音乐。</p>
+		<div style="height: 100%;margin:0 auto;width: 600px;">
+			<div class="hl_b2" id="startGame"><span id="hla" >开始游戏</span> </div>
+			<div class="hl_b2" id="jian2"><span id="hla" onclick="window.open('image/rules.png')">查看规则</span> </div>
+		</div>
+	</div>
+	<div id="viewContent" style="z-index: 1;position: absolute;width: 800px;font-family: 's';display: none;opacity: 0;" class="view">
+		<br />
+		<span style="font-size: 75px;color: #851d1d;">选择曲目</span>
+		<p style="font-size: 35px;font-family: 'b';">选择你要挑战的歌曲</p>
+		<div style="height: 100%;margin:0 auto;width: 600px;">
+			<img id="music1" src="image/music1.png" style="width: 100%;cursor: pointer;"/>
+		</div>
+	</div>
+</body>
+<script>
+	viewex = document.getElementById("view");
+	viewex.style.left = document.body.clientWidth / 2 - 400 + "px";
+	viewex = document.getElementById("viewContent");
+	viewex.style.left = document.body.clientWidth / 2 - 400 + "px";
+</script>
+<script src="js/game.js" type="module"></script>
+
+</html>
