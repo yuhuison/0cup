@@ -32,13 +32,13 @@ https://www.bilibili.com/video/BV1RK4y1Q7vF
 
 >   江湖有梦这个视图采用的是非线性的内容呈现，用户可以在tab栏中点击自己想看的内容。
 
->   ![image1](media\image1.png)
+>   ![image1](media/image1.png)
 
 1.  重走西游
 
 >   这个模块采用的是线性方式呈现内容，通过动画和一些情景再现，介绍了西游题材游戏《黑神话:悟空》
 
->   ![image2](C:\Users\YuSang\Desktop\image2.png)
+>   ![image2](media/image2.png)
 
 1.  醉意江南：
 
@@ -46,7 +46,7 @@ https://www.bilibili.com/video/BV1RK4y1Q7vF
 
 >   由左下角的严大人为用户带来江南百景图的游戏玩法，内容等介绍
 
->   ![image3](C:\Users\YuSang\Desktop\image3.png)
+>   ![image3](media/image3.png)
 
 1.  画廊
 
